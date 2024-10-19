@@ -1,6 +1,6 @@
 name: Run E2E tests
 
-on: puush
+on: [push, pull_request]
 
 jobs: 
   cypress-run:
