@@ -25,7 +25,7 @@ export default async function Home() {
   const [highlightedProduct, ...otherProducts] = await getFeatureProducts()
 
   return (
-    <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6">
+    <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6 h-screen">
       <Link
         href={`/product/${highlightedProduct.slug}`}
         className="group relative col-span-6 row-span-6 rounded-lg bg-zinc-900 overflow-hidden flex items-center justify-center"
@@ -54,12 +54,10 @@ export default async function Home() {
       </Link>
 
       {otherProducts.map((product) => {
-        return (
-          <>
+          return (
+          <div key={product.id} className='group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex items-center justify-center'>
             <Link
-              key={product.id}
               href={`/product/${product.slug}`}
-              className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex items-center justify-center"
             >
               <Image
                 src={product.image}
@@ -83,8 +81,8 @@ export default async function Home() {
                 </span>
               </div>
             </Link>
-          </>
-        )
+          </div>
+          )
       })}
     </div>
   )
